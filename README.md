@@ -1,2 +1,2 @@
 # tatortloader
-Python Script zum Downloaden des Tatorts aus der Mediathek
+Python Script zum Downloaden des Tatorts aus der ARD-Mediathek
