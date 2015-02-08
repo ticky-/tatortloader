@@ -27,7 +27,7 @@ def reporthook(count, block_size, total_size):
     else:
         timeLeft = "-"
     delta = str(datetime.timedelta(seconds=delta))
-    sys.stdout.write("\r%.2f%% -------------------- %s / %s           %s -------------------- time left: %s [h:min]         " % (percent, sizeString(actualSize), sizeString(total_size), delta, timeLeft))
+    sys.stdout.write("\r%.2f%%  |  %s / %s  |  %s / time left: %s [h:min]      " % (percent, sizeString(actualSize), sizeString(total_size), delta, timeLeft))
     sys.stdout.flush()
 
 
