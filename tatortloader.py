@@ -20,14 +20,14 @@ def reporthook(count, block_size, total_size):
     percent = (actualSize * 100.0 / total_size)
     timeNow = time.time() 
     delta = int(timeNow - startTime)
-    if percent > 0.2:
+    if percent > 0.1:
         timeLeft = ((timeNow - startTime) / percent) * (100 - percent)
         timeLeft = str(datetime.timedelta(seconds=int(timeLeft)))
         timeLeft = ':'.join(str(timeLeft).split(':')[:2])
     else:
         timeLeft = "-"
     delta = str(datetime.timedelta(seconds=delta))
-    sys.stdout.write("\r%.2f%%  |  %s / %s  |  %s / time left: %s [h:min]      " % (percent, sizeString(actualSize), sizeString(total_size), delta, timeLeft))
+    sys.stdout.write("\r%.2f%%  ----  %s / %s  ----  %s / time left: %s [h:min]      " % (percent, sizeString(actualSize), sizeString(total_size), delta, timeLeft))
     sys.stdout.flush()
 
 
@@ -47,7 +47,12 @@ sys.stdout = codecs.getwriter(locale.getpreferredencoding())(sys.stdout);
 
 #get URL from user
 print ""
-url = raw_input('Please paste full URL: ')
+print "tatortloader benoetigt die Adresse des unter www.ardmediathek.de eingestellten Tatorts." 
+print "Ueber die Suchfunktion ist die Seite meist ab ca. 20:30-21:00 auffindbar - davor nur der Livestream."
+print "(Download von www.daserste.de funktioniert mit diesem Skript nicht.)"
+print "Die Videodatei wird in den Ordner dieses Skipts gespeichert..."
+print ""
+url = raw_input('Bitte URL hier einfuegen: ')
 print ""
 
 #see, if its working
