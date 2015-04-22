@@ -91,7 +91,11 @@ mediaLinks = media["_mediaArray"][1]["_mediaStreamArray"]
 print "\nfine... let's see what you could get:\n"
 count = 0  
 for mediaLink in mediaLinks:
-    f = urlopen(mediaLink["_stream"])
+    url = mediaLink["_stream"]
+    # some entries could have array of two urls, in this case take the first one
+    if len(url) == 2:
+        url = url[0]
+    f = urlopen(url)
     print "Quality %d would be %s \n" % (count, sizeString(int(f.headers["Content-Length"])))
     count += 1
 quality = raw_input('\nWhich quality do you want [Enter = 2]: ')
