@@ -91,11 +91,11 @@ mediaLinks = media["_mediaArray"][1]["_mediaStreamArray"]
 print "\nfine... let's see what you could get:\n"
 count = 0  
 for mediaLink in mediaLinks:
-    url = mediaLink["_stream"]
+    fileUrl = mediaLink["_stream"]
     # some entries could have array of two urls, in this case take the first one
-    if len(url) == 2:
-        url = url[0]
-    f = urlopen(url)
+    if len(fileUrl) == 2:
+        fileUrl = fileUrl[0]
+    f = urlopen(fileUrl)
     print "Quality %d would be %s \n" % (count, sizeString(int(f.headers["Content-Length"])))
     count += 1
 quality = raw_input('\nWhich quality do you want [Enter = 2]: ')
@@ -113,6 +113,8 @@ print ""
 for mediaLink in mediaLinks:
     if quality == mediaLink["_quality"]:
         mediaURL = mediaLink["_stream"]
+        if len(mediaURL) == 2:
+            mediaURL = mediaURL[0]
         fileName = url
         for s in ['/Tatort', '.de', '/tv', 'ard', 'media', 'thek', 'www', 'http', 'documentId', 'Das-Erste', 'Video', 'bcastId']:
             fileName = fileName.replace(s, "") 
